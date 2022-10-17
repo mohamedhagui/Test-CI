@@ -5,38 +5,38 @@ pipeline {
     }
     stages {
       
-        stage('Checkout GIT ') {
+        stage(' GIT ') {
             steps {
                 echo 'Pulliing ...';
                 git branch: 'ala', url: 'https://github.com/Projet-CI/Test-CI.git'          
             }
         }
         
-          stage('Maven version') {
+          stage('MVN VERSION') {
 		    steps {
 		    sh """mvn -version"""
 	        }
 	    }
       
-	stage('Compiler') {
+	stage('COMPILING') {
       		steps {
         		sh 'mvn compile'
       		}
     	}
-	    stage('Build') {
+	    stage('MVN BUILD') {
       		steps {
         		sh "mvn clean package -DskipTests=true"
 				archive 'target/*.jar'
       		}
     	}
 	    
-	    stage('SonarQube quality tests') {
+	    stage('SONARQUBE') {
 		    steps {
 		    sh "mvn sonar:sonar -Dsonar.projectKey=alakey -Dsonar.host.url=http://192.168.1.21:9000 -Dsonar.login=97b2f538920a2c7396c095725ee092cd0e275c44"
 	        }
 	    }
 		
-		stage('DEPLOY NEXUS') {
+		stage('NEXUS') {
 			steps {
 				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 			}
