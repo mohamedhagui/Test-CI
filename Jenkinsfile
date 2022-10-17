@@ -14,7 +14,9 @@ pipeline {
 
         stage('Build'){
             steps{
+                catchError {
                 sh 'mvn clean install'
+                } echo currentBuild.result
             }
          }
 
