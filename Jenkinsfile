@@ -6,7 +6,7 @@ pipeline
     {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = ""
+        NEXUS_URL = "127.0.0.1:8081"
         NEXUS_CREDENTIAL_ID = "nexus"
     }  
 
@@ -43,16 +43,6 @@ pipeline
             }
         }
         
-         stage('Build Docker image')
-                {
-                
-                    steps 
-                    {
-                        sh 'docker build --no-cache -t webapp:${BUILD_NUMBER} .'             
-                    }
-                }
-        
-
             stage("publish  war file on nexus") 
                 {
                     steps 
@@ -99,14 +89,7 @@ pipeline
                         }
                     }
                 }
-                 stage('Publish Docker image on Nexus')
-                {
-                    steps
-                    {
-                       sh 'docker login -u admin -p vneuron 127.0.0.1:8083; docker tag webapp:${BUILD_NUMBER} 127.0.0.1:8083/webapp:${BUILD_NUMBER}; docker push 127.0.0.1:8083/webapp:${BUILD_NUMBER}'
-
-                    }
-                }
+                *
           }
         /*  post {
           always 
