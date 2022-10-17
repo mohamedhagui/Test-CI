@@ -30,5 +30,10 @@ pipeline{
 		    sh "mvn sonar:sonar -Dsonar.projectKey=project -Dsonar.host.url=http://192.168.1.160:9000 -Dsonar.login=e26a9552a516ed1fac3ae6dca2a739c97aa28e4a"
 	        }
 	    }
+	       stage('MVN JUNIT') {
+            steps {
+                echo "Test junit"
+                  }
+           }
     }
 }
