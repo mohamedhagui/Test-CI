@@ -20,6 +20,11 @@ pipeline{
         		sh 'mvn compile'
       		}
     	}
+        stage('Artifact Construction') {
+            steps{
+                sh "mvn -B -DskipTests package " 
+            }
+        }
       
     }
 }
