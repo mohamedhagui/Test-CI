@@ -32,7 +32,7 @@ pipeline {
 	    
 	    stage('SonarQube quality tests') {
 		    steps {
-		    sh "mvn sonar:sonar -Dsonar.projectKey=alakey -Dsonar.host.url=http://192.168.1.21:9000 -Dsonar.login=dbda1668b523d3a53bf4f12670e7a2873085d573"
+		    sh "mvn sonar:sonar -Dsonar.projectKey=alakey -Dsonar.host.url=http://192.168.1.21:9000 -Dsonar.login=97b2f538920a2c7396c095725ee092cd0e275c44"
 	        }
 	    }
 		
