@@ -15,7 +15,8 @@ import java.util.Set;
 @Slf4j
 @Transactional
 public class FactureServiceImpl implements IFactureService {
-
+@Autowired
+IFactureService us;
 	@Autowired
 	FactureRepository factureRepository;
 	@Autowired
@@ -111,6 +112,12 @@ public class FactureServiceImpl implements IFactureService {
 		float pourcentage=(totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
 		return pourcentage;
 	}
+@Test
+@Order(1)
+public void testRetrieveAllFactures() {
+List<Facture> listFactures = us.retrieveAllFactures();
+Assertions.assertEquals(0, listFactures.size());
+}
 	
 
 }
