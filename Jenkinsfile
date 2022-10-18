@@ -9,7 +9,7 @@ pipeline {
         stage('Build'){
             steps{
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                      sh 'mvn compile'
+                      sh 'mvn clean install'
             }
                
             }
