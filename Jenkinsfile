@@ -23,7 +23,7 @@ pipeline{
                stage ('JUnit TEST') {
 steps {
 echo "Maven Test JUnit";
-bat 'mvn test';
+sh 'mvn test';
 }
 }
         stage('sonar') {
