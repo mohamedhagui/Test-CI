@@ -42,7 +42,7 @@ echo "Maven Test JUnit";
    
     stage('EMAIL ALERT') {
         steps{
-           emailext body: 'your pipeline was successfully built ! everything is good  ', subject: 'build done', to: 'mohammed.guesmi@esprit.tn'
+           emailext body: 'your pipeline was successfully built ! everything is good  ', subject: 'build done', to: 'guesmicr7@gmail.com'
         }
     }
     }
