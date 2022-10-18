@@ -1,41 +1,46 @@
 pipeline {
-    agent any 
+    agent any
+    tools {
+    	maven 'M2_HOME'
+    }
     stages {
-        stage('GIT') {
+      
+        stage(' GIT ') {
             steps {
-                echo "get project";
-                git "https://github.com/Projet-CI/Test-CI.git";
-                  }
-           }
-           
-        stage('MVN CLEAN') {
-            steps {
-                sh 'mvn clean'
-                  }
-           }
-           
-        stage('MVN COMPILE') {
-            steps {
-                sh 'mvn compile'
-                  }
-           }
-           
-        stage('MVN SONARQUBE') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.projectKey=alakey -Dsonar.host.url=http://192.168.1.21:9000 -Dsonar.login=97b2f538920a2c7396c095725ee092cd0e275c44'
-                  }
-           }
+                echo 'Pulliing ...';
+                git branch: 'ala', url: 'https://github.com/Projet-CI/Test-CI.git'          
+            }
+        }
         
-        stage('MVN JUNIT') {
-            steps {
-                echo "Test junit"
-                  }
-           }
-           
-        stage('MVN NEXUS') {
-            steps {
-                sh 'mvn deploy'
-                  }
-           }
+          stage('MVN VERSION') {
+		    steps {
+		    sh """mvn -version"""
+	        }
+	    }
+      
+	stage('COMPILING') {
+      		steps {
+        		sh 'mvn compile'
+      		}
+    	}
+	    stage('MVN BUILD') {
+      		steps {
+        		sh "mvn clean package -DskipTests=true"
+				archive 'target/*.jar'
+      		}
+    	}
+	    
+	    stage('SONARQUBE') {
+		    steps {
+		    sh "mvn sonar:sonar -Dsonar.projectKey=alakey -Dsonar.host.url=http://192.168.1.21:9000 -Dsonar.login=dbda1668b523d3a53bf4f12670e7a2873085d573"
+	        }
+	    }
+		
+		stage('NEXUS') {
+			steps {
+				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+			}
+		} 
+	           
     }
 }
