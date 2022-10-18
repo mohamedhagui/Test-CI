@@ -37,6 +37,20 @@ echo "Maven Test JUnit";
                 sh 'mvn deploy -DskipStaging=true -Dmaven.deploy.skip=true -Dmaven.deploy.skip=false -DskipTests'
             }
         }
- 
+ post {
+        always {
+            emailext body: 'Pipeline started Building , You will receive an email containing build state', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Building'
+        }
+        success {  
+             emailext body: 'Pipeline success', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Success'  
+         }  
+         failure {  
+             emailext body: 'Pipeline failed', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Failed' 
+         }  
+         unstable {  
+             emailext body: 'Pipeline unstable', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Unstable' 
+         } 
+
+    }
     }
 }
