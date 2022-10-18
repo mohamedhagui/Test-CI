@@ -4,10 +4,10 @@ pipeline{
         maven 'M2_HOME'
     }
     stages {
-        stage('Getting project from Git') {
-            steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/mohamed']], extensions: [], userRemoteConfigs: [[credentialsId: 'MyGithub', url: 'https://github.com/Projet-CI/Test-CI.git
-']]])   
+      stage(' GIT ') {
+            steps {
+                echo 'Pulliing ...';
+                git branch: 'mohamed', url: 'https://github.com/Projet-CI/Test-CI.git'          
             }
         }
         stage('Cleaning the project') {
