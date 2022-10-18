@@ -22,10 +22,10 @@ pipeline {
 
         stage('Sonarqube'){
             environment{
-                scannerHome = tool 'sonarQube Scanner'
+                scannerHome = tool 'sonarscanner'
             }    
             steps{
-                withSonarQubeEnv('Mysonarqube'){
+                withSonarQubeEnv('sonarqube'){
                     sh "mvn sonar:sonar"
                 }         
             }
