@@ -42,21 +42,7 @@ echo "Maven Test JUnit";
    
     stage('EMAIL ALERT') {
         steps{
-            post {
-        always {
-            emailext body: 'Pipeline started Building , You will receive an email containing build state',to: 'guesmicr7@gmail.com', subject: 'Building'
-        }
-        success {  
-             emailext body: 'Pipeline success', to: 'guesmicr7@gmail.com', subject: 'Success'  
-         }  
-         failure {  
-             emailext body: 'Pipeline failed', to: 'guesmicr7@gmail.com', subject: 'Failed' 
-         }  
-         unstable {  
-             emailext body: 'Pipeline unstable',to: 'guesmicr7@gmail.com', subject: 'Unstable' 
-         } 
-
-            } 
+           emailext body: 'your pipeline was successfully built ! everything is good  ', subject: 'build done', to: 'mohammed.guesmi@esprit.tn'
         }
     }
     }
