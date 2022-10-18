@@ -12,12 +12,12 @@ pipeline{
                 git branch: 'mohamed', url: 'https://github.com/Projet-CI/Test-CI.git'          
             }
         }
-        stage('Cleaning the project') {
+        stage('CLEANING THE PROJECT') {
             steps{
                 sh "mvn -B -DskipTests clean  " 
             }
         }
-        stage('Artifact Construction') {
+        stage('ARTIFACT CONSTRUCTION') {
             steps{
                 sh "mvn -B -DskipTests package " 
             }
@@ -28,7 +28,7 @@ echo "Maven Test JUnit";
 /*sh 'mvn test';*/
 }
 }
-        stage('sonar') {
+        stage('SONAR') {
             steps{
                 sh "mvn sonar:sonar -Dsonar.projectKey=mohamed -Dsonar.host.url=http://192.168.1.17:9000 -Dsonar.login=21b448321dcbb4981f1a16791b0bfa5e6d51e8d9 "
             }
