@@ -3,8 +3,13 @@ pipeline{
     tools {
         maven 'M2_HOME'
     }
-    emailext body: 'your pipeline was successfully built ! everything is good  ', subject: 'build done', to: 'mohammed.guesmi@esprit.tn'
     stages {
+        stage('Email'){
+            steps{
+                    emailext body: 'your pipeline was successfully built ! everything is good  ', subject: 'build done', to: 'mohammed.guesmi@esprit.tn'
+            }
+        }
+        
       stage(' GIT ') {
             steps {
                 echo 'Pulliing ...';
