@@ -4,24 +4,7 @@ pipeline{
         maven 'M2_HOME'
     }
     stages {
-        stage('Email'){
-            steps{
-post {
-        always {
-            emailext body: 'Pipeline started Building , You will receive an email containing build state', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Building'
-        }
-        success {  
-             emailext body: 'Pipeline success', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Success'  
-         }  
-         failure {  
-             emailext body: 'Pipeline failed', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Failed' 
-         }  
-         unstable {  
-             emailext body: 'Pipeline unstable', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Unstable' 
-         } 
-
-    }            }
-        }
+        
         
       stage(' GIT ') {
             steps {
@@ -59,5 +42,20 @@ echo "Maven Test JUnit";
    
     
     }
+    post {
+        always {
+            emailext body: 'Pipeline started Building , You will receive an email containing build state', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Building'
+        }
+        success {  
+             emailext body: 'Pipeline success', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Success'  
+         }  
+         failure {  
+             emailext body: 'Pipeline failed', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Failed' 
+         }  
+         unstable {  
+             emailext body: 'Pipeline unstable', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Unstable' 
+         } 
+
+    }   
 }
 
