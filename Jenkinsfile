@@ -20,6 +20,12 @@ pipeline{
                 sh "mvn -B -DskipTests package " 
             }
         }
+               stage ('JUnit TEST') {
+steps {
+echo "Maven Test JUnit";
+bat 'mvn test';
+}
+}
         stage('sonar') {
             steps{
                 sh "mvn sonar:sonar -Dsonar.projectKey=mohamed -Dsonar.host.url=http://192.168.1.17:9000 -Dsonar.login=21b448321dcbb4981f1a16791b0bfa5e6d51e8d9 "
@@ -31,11 +37,6 @@ pipeline{
                 sh 'mvn deploy -DskipStaging=true -Dmaven.deploy.skip=true -Dmaven.deploy.skip=false -DskipTests'
             }
         }
-        stage ('JUnit TEST') {
-steps {
-echo "Maven Test JUnit";
-bat 'mvn test';
-}
-}
+ 
     }
 }
