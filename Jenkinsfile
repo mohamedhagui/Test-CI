@@ -30,7 +30,7 @@ echo "Maven Test JUnit";
 }
         stage('SONAR') {
             steps{
-                sh "mvn sonar:sonar -Dsonar.projectKey=mohamed -Dsonar.host.url=http://192.168.1.17:9000 -Dsonar.login=21b448321dcbb4981f1a16791b0bfa5e6d51e8d9 "
+                sh "mvn sonar:sonar -Dsonar.projectKey=mohamed -Dsonar.host.url=http://192.168.1.17:9000 -Dsonar.login=21872257036352c8d6602ffaded9c3d144048010 "
             }
                 
             }  
