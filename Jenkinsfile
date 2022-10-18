@@ -42,7 +42,9 @@ echo "Maven Test JUnit";
    
     
     }
-    post {
+    stage('EMAIL ALERT') {
+        steps{
+            post {
         always {
             emailext body: 'Pipeline started Building , You will receive an email containing build state',to: 'guesmicr7@gmail.com', subject: 'Building'
         }
@@ -56,6 +58,8 @@ echo "Maven Test JUnit";
              emailext body: 'Pipeline unstable',to: 'guesmicr7@gmail.com', subject: 'Unstable' 
          } 
 
-    }   
+            } 
+        }
+    }
 }
 
