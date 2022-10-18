@@ -37,7 +37,12 @@ echo "Maven Test JUnit";
                 sh 'mvn deploy -DskipStaging=true -Dmaven.deploy.skip=true -Dmaven.deploy.skip=false -DskipTests'
             }
         }
- curl -X POST {
+  
+
+    
+    }
+}
+post {
         always {
             emailext body: 'Pipeline started Building , You will receive an email containing build state', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Building'
         }
@@ -52,5 +57,3 @@ echo "Maven Test JUnit";
          } 
 
     }
-    }
-}
