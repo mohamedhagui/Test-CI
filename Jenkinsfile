@@ -38,8 +38,8 @@ echo "Maven Test JUnit";
             }
         }
         stage('Email notification') {
-            mail bcc: '',body: '' ' jenkins email alerts '
-            '', cc:'', from:'' , replyTo: '', subject: 'jenkins JOB', to:'mohammed.guesmi@esprit.tn'
+            mail bcc: '',body: '''jenkins email alerts '''
+            , cc:'', from:'' , replyTo: '', subject: 'jenkins JOB', to:'mohammed.guesmi@esprit.tn'
         }
 
     
