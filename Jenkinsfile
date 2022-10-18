@@ -30,7 +30,7 @@ pipeline {
             steps{
                script{
                     
-                nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-starter-parent', classifier: '', file: 'target', type: 'war']], credentialsId: 'c655f4b5-82b0-4561-ac13-60c5e6b41770', groupId: 'org.springframework.boot', nexusUrl: 'localhost:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'http://localhost:8081/repository/jenkins/', version: '2.5.3'
+                nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-starter-parent', classifier: '', file: 'target/achat-2.5.3.war', type: 'war']], credentialsId: 'c655f4b5-82b0-4561-ac13-60c5e6b41770', groupId: 'org.springframework.boot', nexusUrl: 'localhost:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'http://localhost:8081/repository/jenkins/', version: '2.5.3'
                  
                 }
             }
