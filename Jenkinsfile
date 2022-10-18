@@ -31,5 +31,11 @@ pipeline{
                 sh 'mvn deploy -DskipStaging=true -Dmaven.deploy.skip=true -Dmaven.deploy.skip=false -DskipTests'
             }
         }
+        stage ('JUnit TEST') {
+steps {
+echo "Maven Test JUnit";
+bat 'mvn test';
+}
+}
     }
 }
