@@ -1,38 +1,40 @@
-pipeline{
-    agent any
-    tools {
-        maven 'M2_HOME'
-    }
+pipeline {
+    agent any 
     stages {
-        stage('Checkout GIT ') {
+        stage('GIT') {
             steps {
-                echo 'Pulliing ...';
-                git branch: 'sameh', url: 'https://github.com/Projet-CI/Test-CI.git'          
-            }
-        }
-        stage('Cleaning the project') {
-            steps{
-                sh "mvn -B -DskipTests clean  " 
-            }
-        }
-          stage('Compiler') {
-      		steps {
-        		sh 'mvn compile'
-      		}
-    	}
-        stage('Artifact Construction') {
-            steps{
-                sh "mvn -B -DskipTests package " 
-            }
-        }
-      stage('SonarQube quality tests') {
-		    steps {
-		    sh "mvn sonar:sonar -Dsonar.projectKey=project -Dsonar.host.url=http://192.168.1.160:9000 -Dsonar.login=e26a9552a516ed1fac3ae6dca2a739c97aa28e4a"
-	        }
-	    }
-	       stage('MVN JUNIT') {
+                echo "get project";
+                git "https://github.com/Projet-CI/Test-CI.git";
+                  }
+           }
+           
+        stage('MVN CLEAN') {
+            steps {
+                sh 'mvn clean'
+                  }
+           }
+           
+        stage('MVN COMPILE') {
+            steps {
+                sh 'mvn compile'
+                  }
+           }
+           
+        stage('MVN SONARQUBE') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.projectKey=alakey -Dsonar.host.url=http://192.168.1.21:9000 -Dsonar.login=97b2f538920a2c7396c095725ee092cd0e275c44'
+                  }
+           }
+        
+        stage('MVN JUNIT') {
             steps {
                 echo "Test junit"
+                  }
+           }
+           
+        stage('MVN NEXUS') {
+            steps {
+                sh 'mvn deploy'
                   }
            }
     }
