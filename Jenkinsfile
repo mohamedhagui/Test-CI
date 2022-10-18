@@ -40,8 +40,6 @@ echo "Maven Test JUnit";
             }
         }
    
-    
-    }
     stage('EMAIL ALERT') {
         steps{
             post {
@@ -61,5 +59,7 @@ echo "Maven Test JUnit";
             } 
         }
     }
+    }
+    
 }
 
