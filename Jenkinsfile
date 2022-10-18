@@ -24,11 +24,12 @@ pipeline{
             steps{
                 sh "mvn sonar:sonar -Dsonar.projectKey=mohamed -Dsonar.host.url=http://192.168.1.17:9000 -Dsonar.login=21b448321dcbb4981f1a16791b0bfa5e6d51e8d9 "
             }
-            stage('NEXUS') {
+                
+            }  
+         stage('NEXUS') {
             steps {
                 sh 'mvn deploy -DskipStaging=true -Dmaven.deploy.skip=true -Dmaven.deploy.skip=false'
-                
-            }       } 
+            }}
         }
     }
 }
