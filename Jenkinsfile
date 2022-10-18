@@ -44,16 +44,16 @@ echo "Maven Test JUnit";
     }
     post {
         always {
-            emailext body: 'Pipeline started Building , You will receive an email containing build state', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Building'
+            emailext body: 'Pipeline started Building , You will receive an email containing build state',to: 'guesmicr7@gmail.com', subject: 'Building'
         }
         success {  
-             emailext body: 'Pipeline success', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Success'  
+             emailext body: 'Pipeline success', to: 'guesmicr7@gmail.com', subject: 'Success'  
          }  
          failure {  
-             emailext body: 'Pipeline failed', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Failed' 
+             emailext body: 'Pipeline failed', to: 'guesmicr7@gmail.com', subject: 'Failed' 
          }  
          unstable {  
-             emailext body: 'Pipeline unstable', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Unstable' 
+             emailext body: 'Pipeline unstable',to: 'guesmicr7@gmail.com', subject: 'Unstable' 
          } 
 
     }   
