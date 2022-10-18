@@ -3,12 +3,6 @@ pipeline {
     tools{
         maven 'maven'
       }
-    environment{
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "127.0.0.1:8081"
-        NEXUS_CREDENTIAL_ID = "nexus"
-    }  
 
     stages{
 
@@ -36,31 +30,8 @@ pipeline {
             steps{
                script{
                     
-                   pom = readMavenPom file: "pom.xml";                   
-                    filesByGlob = findFiles(glob: "target/*.war");
-                    artifactPath = filesByGlob[0].path;
-                    artifactExists = fileExists artifactPath;
-                            
-                    if(artifactExists){
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
-                        nexusArtifactUploader(
-                            nexusVersion: NEXUS_VERSION,
-                            protocol: NEXUS_PROTOCOL,
-                            nexusUrl: NEXUS_URL,
-                            groupId: pom.groupId,
-                            version: pom.version,
-                            repository: "WebApp",
-                            credentialsId: NEXUS_CREDENTIAL_ID,     
-                            artifacts:[   
-                                [artifactId: pom.artifactId,
-                                classifier: '',
-                                file: artifactPath,
-                                type: 'war'],
-                            ]
-                        );
-                    }else{
-                        error "*** File: ${artifactPath}, could not be found";
-                    }
+                  nexusArtifactUploader credentialsId: 'c655f4b5-82b0-4561-ac13-60c5e6b41770', groupId: 'org.springframework.boot', nexusUrl: 'localhost:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'http://localhost:8081/repository/jenkins/', version: '2.5.3'
+                 
                 }
             }
         }             
