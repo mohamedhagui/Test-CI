@@ -28,7 +28,7 @@ pipeline{
             steps {
                 sh 'mvn deploy -DskipStaging=true -Dmaven.deploy.skip=true -Dmaven.deploy.skip=false'
                 
-            }        
+            }       } 
         }
     }
 }
