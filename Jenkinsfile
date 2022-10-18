@@ -37,10 +37,7 @@ echo "Maven Test JUnit";
                 sh 'mvn deploy -DskipStaging=true -Dmaven.deploy.skip=true -Dmaven.deploy.skip=false -DskipTests'
             }
         }
-        stage('Email notification') {
-            mail bcc: '',body: 'jenkins email alerts', cc:'', from:'' , replyTo: '', subject: 'jenkins JOB', to:'mohammed.guesmi@esprit.tn'
-        }
-
+   
     
     }
 }
