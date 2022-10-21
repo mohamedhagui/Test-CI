@@ -34,7 +34,13 @@ pipeline {
                  
                 }
             }
-        }             
+        }  
+            
+        stage("Build docker image"){
+            steps{
+                sh 'docker build -t zeynebsd/projet-ci . '
+            }
+        }
     }
         /*  post {
           always 
