@@ -9,7 +9,7 @@ pipeline {
         stage('Build'){
             steps{
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                      sh 'mvn install ; mvn deploy'
+                      sh 'mvn install -DskipTests'
             }
                
             }
