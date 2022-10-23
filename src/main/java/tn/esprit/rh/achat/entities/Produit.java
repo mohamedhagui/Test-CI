@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+
 public class Produit implements Serializable {
 
 	/**
@@ -47,6 +50,17 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
+	
+	
+	public Produit(String codeProduit2, String libelleProduit2, int prix2, Date date, Date date2) {
+		// TODO Auto-generated constructor stub
+		this.codeProduit = codeProduit2;
+		this.libelleProduit = libelleProduit2;
+		this.prix = prix2;
+		this.dateCreation = date;
+		this.dateDerniereModification = date2;
+		
+	}
 	
 
 
