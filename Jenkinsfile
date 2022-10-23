@@ -41,6 +41,11 @@ pipeline {
                 sh 'docker build -t zeynebsd/projet-ci . '
             }
         }
+          stage("Push docker image"){
+            steps{
+                sh 'docker push zeynebsd/projet-ci'
+            }
+        }
     }
         /*  post {
           always 
