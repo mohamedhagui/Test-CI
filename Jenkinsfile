@@ -20,17 +20,6 @@ pipeline {
                   }
            }
            
-        stage('MVN SONARQUBE') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
-                  }
-           }
-        
-        stage('MVN JUNIT') {
-            steps {
-                echo "Test junit"
-                  }
-           }
            
         stage('MVN NEXUS') {
             steps {
