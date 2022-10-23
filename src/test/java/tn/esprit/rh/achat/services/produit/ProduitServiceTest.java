@@ -54,14 +54,14 @@ public class ProduitServiceTest {
     @Test
     @Order(3)
      void testRetrieveProduit() {
-    	Produit p = ps.retrieveProduit((long) 3);
-    assertEquals("2", p.getIdProduit().toString());
+    	Produit p = ps.retrieveProduit((long) 4);
+    assertEquals("4", p.getIdProduit().toString());
     }
     @Test
     @Order(4)
      void testDeleteProduit() {
-    	ps.deleteProduit((long) 3);
-    assertNull(ps.retrieveProduit((long) 3));
+    	ps.deleteProduit((long) 4);
+    assertNull(ps.retrieveProduit((long) 4));
     }
 
 }
