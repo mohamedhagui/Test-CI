@@ -83,13 +83,13 @@ pipeline {
                 }
             }
         }
-	   
+	   /*
 	    stage('JUNIT TEST') {
       		steps {
         		sh 'mvn test'
 				
       		}
     	}
-	           
+	     */      
     }
 }
