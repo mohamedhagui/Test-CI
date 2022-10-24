@@ -67,7 +67,7 @@ pipeline {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            
-           sh 'sudo docker build -t alaboukhris/alaprojetcicd:latest .'
+           sh 'docker build -t alaboukhris/alaprojetcicd:latest .'
            sh 'docker push alaboukhris/alaprojetcicd:latest'
          }
        }
