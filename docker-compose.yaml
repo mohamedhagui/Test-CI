@@ -11,7 +11,7 @@ services:
   springboot-docker-container:
     image: alaboukhris/alaprojetcicd:latest
     ports:
-      - "8089:8089"
+      - "8082:8082"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/tpachato?autoReconnect=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: "root"
