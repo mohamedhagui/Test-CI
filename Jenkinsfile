@@ -47,6 +47,7 @@ pipeline {
             steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
           
+	   sh 'printenv'	 
            sh 'docker build -t alaboukhris/projetcicd:""$GIT_COMMIT"" .'
            sh 'docker push alaboukhris/projetcicd:""$GIT_COMMIT""'
          }
