@@ -29,6 +29,13 @@ pipeline {
 				archive 'target/*.jar'
       		}
     	}
+    	
+    	 stage('JUNIT TEST') {
+      		steps {
+        		sh "mvn test"
+				'
+      		}
+    	}
 	    
 /*	    stage('SONARQUBE') {
 		    steps {
