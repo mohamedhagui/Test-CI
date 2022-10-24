@@ -15,7 +15,7 @@ pipeline {
             }
          }
 
-        stage('Sonarqube'){
+       /* stage('Sonarqube'){
             environment{
                 scannerHome = tool 'sonarscanner'
             }    
@@ -24,7 +24,7 @@ pipeline {
                     sh "mvn sonar:sonar -Dsonar.projectKey=projet-ci "
                 }         
             }
-        }
+        }*/
         
         stage("publish  war file on nexus"){
             steps{
