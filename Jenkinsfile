@@ -20,11 +20,20 @@ pipeline {
                   }
            }
            
-           
-        stage('MVN NEXUS') {
-            steps {
-                sh 'mvn deploy'
-                  }
-           }
+  stage("Step Build "){
+            steps{
+                sh 'docker build -t samehbrdocker/validation . '
+            }
+        }
+          stage(" Step Push "){
+            steps{
+                sh 'docker push samehbrdocker/validation '
+            }
+        }
+        stage(" Step Docker-compose "){
+            steps{
+                sh 'docker-compose up -d '
+            }
+        }
     }
 }
