@@ -43,7 +43,7 @@ pipeline {
 		} 
 	    
 */	    
-	 stage('Build docker image'){
+/*	 stage('Build docker image'){
             steps{
                 script{
                     sh 'docker build -t alaboukhris/alaprojetcicd .'
@@ -61,6 +61,17 @@ pipeline {
                 }
             }
         }
+	*/
+	    
+       stage('Docker Build and Push') {
+       steps {
+         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+           
+           sh 'sudo docker build -t alaboukhris/alaprojetcicd:latest .'
+           sh 'docker push alaboukhris/alaprojetcicd:latest'
+         }
+       }
+     }
 	           
     }
 }
