@@ -1,0 +1,22 @@
+version: "3"
+services:
+  projet-ci:
+    image: zeynebsd/projet-ci
+    ports:
+      - "8089:8089"
+    networks:
+      - project-ci 
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8
+    networks:
+      - project-ci 
+    environment:
+      - MYSQL_ROOT_PASSWORD=root 
+      - MYSQL_DATABASE=achatdb  
+
+networks:
+  project-ci: 
+
