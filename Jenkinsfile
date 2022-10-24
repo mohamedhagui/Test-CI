@@ -1,26 +1,26 @@
 pipeline {
     agent any 
     stages {
-        stage('GIT') {
+        stage('Step git') {
             steps {
                 echo "get project";
                 git "https://github.com/Projet-CI/Test-CI.git";
                   }
            }
            
-        stage('MVN CLEAN') {
+        stage('Step mvn clean ') {
             steps {
                 sh 'mvn clean'
                   }
            }
            
-        stage('MVN COMPILE') {
+        stage('Step mvn compile') {
             steps {
                 sh 'mvn compile'
                   }
            }
            
-  stage("Step Build "){
+         stage("Step Build "){
             steps{
                 sh 'docker build -t samehbrdocker/validation . '
             }
