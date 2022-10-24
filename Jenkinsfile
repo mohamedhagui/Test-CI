@@ -46,8 +46,13 @@ pipeline {
                 sh 'docker push zeynebsd/projet-ci'
             }
         }
+        stage("Docker compose up"){
+            steps{
+                sh 'docker-compose -d up '
+            }
+        }
     }
-        /*  post {
+      post {
           always 
           {
             script 
@@ -60,5 +65,5 @@ pipeline {
                         color: color)
             }
           }
-      }*/
+      }
 } 
