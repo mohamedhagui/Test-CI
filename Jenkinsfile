@@ -45,12 +45,13 @@ pipeline {
 */	    
 	 stage('Docker Build and Push') {
             steps {
-         //withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+		    
+                    withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
           
 	  	 
            sh 'docker build -t alaboukhris/alaprojetcicd:""$GIT_COMMIT"" .'
            sh 'docker push alaboukhris/alaprojetcicd:""$GIT_COMMIT""'
-         
+		    }
        }
      }
 	           
