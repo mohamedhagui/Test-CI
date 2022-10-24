@@ -43,17 +43,24 @@ pipeline {
 		} 
 	    
 */	    
-	 stage('Docker Build and Push') {
-            steps {
-		    
-                    withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
-          
-	  	 
-           sh 'docker build -t alaboukhris/alaprojetcicd:""$GIT_COMMIT"" .'
-           sh 'docker push alaboukhris/alaprojetcicd:""$GIT_COMMIT""'
-		    }
-       }
-     }
+	 stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t alaboukhris/alaprojetcicd .'
+                }
+            }
+        }
+        stage('Push image to Hub'){
+            steps{
+                script{
+                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                   sh 'docker login -u alaboukhris -p ${dockerhubpwd}'
+
+}
+                   sh 'docker push alaboukhris/alaprojetcicd'
+                }
+            }
+        }
 	           
     }
 }
