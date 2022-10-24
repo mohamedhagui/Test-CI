@@ -46,13 +46,13 @@ pipeline {
 	     stage('BUILD DOCKER IMAGE'){
                      steps{
 			     sh 'printenv'
-                             sh 'docker build -t alaboukhris/projetCI:""BUILD_ID"" . '
+                             sh 'docker build -t alaboukhris/projetCI:""$BUILD_ID"" . '
             }
         }
           stage("PUSH"){
             steps{
 		    withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
-                    sh 'docker push alaboukhris/projetCI:""BUILD_ID""'
+                    sh 'docker push alaboukhris/projetCI:""$BUILD_ID""'
             }
            }
 	 }
