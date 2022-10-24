@@ -22,12 +22,12 @@ pipeline {
            
          stage("Step Build "){
             steps{
-                sh 'docker build -t samehbrdocker/validation . '
+                sh 'docker build -t validation . '
             }
         }
           stage(" Step Push "){
             steps{
-                sh 'docker push samehbrdocker/validation '
+                sh 'docker push validation '
             }
         }
         stage(" Step Docker-compose "){
