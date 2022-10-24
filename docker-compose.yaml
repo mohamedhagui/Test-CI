@@ -1,27 +1,23 @@
-version: "3"
+version: '3.8'
 services:
-  backapp:
+  mysqldb:
+    image: 'mysql:5.7'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=tpachato
+    ports:
+      - "3307:3306"
+  springboot-docker-container:
     image: alaboukhris/alaprojetcicd:latest
     ports:
       - "8089:8089"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/tpachato?autoReconnect=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: "root"
       SPRING_DATASOURCE_PASSWORD: "root"
-      MYSQL_PORT: 3306
-    restart: always
+    build:
+      context: "./"
+      dockerfile: "Dockerfile"
     depends_on:
       - mysqldb
- 
-  mysqldb:
-    image: mysql:8.0
-    ports:
-      - "3307:3306"
-    volumes:
-      - /db:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_PASSWORD=root
-      - MYSQL_DATABASE=demo  
-
- 
