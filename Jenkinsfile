@@ -19,7 +19,12 @@ pipeline {
                 sh 'mvn compile'
                   }
            }
-           
+           	    stage('MVN BUILD') {
+      		steps {
+        		sh "mvn clean package -DskipTests=true"
+				archive 'target/*.jar'
+      		}
+    	}
          stage('Docker Build and Push') {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
