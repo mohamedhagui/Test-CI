@@ -70,8 +70,8 @@ pipeline {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            
-           sh 'docker build -t mohamed/mohamedprojetcicd:latest .'
-           sh 'docker push mohamed/mohamedprojetcicd:latest'
+           sh 'docker build -t medguesmi/mohamedprojetcicd:latest .'
+           sh 'docker push medguesmi/mohamedprojetcicd:latest'
          }
        }
      }
