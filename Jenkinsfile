@@ -19,7 +19,7 @@ pipeline {
                 sh 'mvn compile'
                   }
            }
-           	    stage('MVN BUILD') {
+           	    stage('Step mvn build') {
       		steps {
         		sh "mvn clean package -DskipTests=true"
 				archive 'target/*.jar'
