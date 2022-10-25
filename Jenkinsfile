@@ -37,7 +37,7 @@ echo "Maven Test JUnit";
             }  
          stage('NEXUS') {
             steps {
-                sh 'mvn deploy -DskipStaging=true -Dmaven.deploy.skip=true -Dmaven.deploy.skip=false -DskipTests'
+                sh 'mvn deploy -DskipStaging=true -Dmaven.deploy.skip=true -Dmaven.deploy.skip=false '
             }
         }
    
