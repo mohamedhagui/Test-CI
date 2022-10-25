@@ -56,7 +56,14 @@ pipeline {
            sh 'docker push medguesmi/mohamedprojetcicd:latest'
          }
        }
-     }    
+     }   
+	    stage('Start container') {
+             steps {
+                sh 'docker-compose -v'
+                sh 'docker-compose up -d '
+                sh 'docker-compose ps'
+      }
+        }
  /* stage('Build docker image'){
             steps{
                 script{
