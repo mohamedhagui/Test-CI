@@ -144,5 +144,5 @@ echo "Maven Test JUnit";
     }
     }
     
-}/*
+}/
 
