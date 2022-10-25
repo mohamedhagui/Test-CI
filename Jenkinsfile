@@ -1,11 +1,12 @@
-pipeline {
+pipeline{
     agent any
     tools {
-    	maven 'M2_HOME'
+        maven 'M2_HOME'
     }
     stages {
-      
-        stage(' GIT ') {
+        
+        
+      stage(' GIT ') {
             steps {
                 echo 'Pulliing ...';
                 git branch: 'mohamed', url: 'https://github.com/Projet-CI/Test-CI.git'          
