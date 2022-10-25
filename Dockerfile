@@ -1,5 +1,5 @@
 # define base docker image
 FROM openjdk:8-jre-alpine
-ADD target/*.jar achat.jar
+ADD target/*.jar app.jar
 EXPOSE 8089
-ENTRYPOINT ["java", "-jar", "achat-1.0.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
