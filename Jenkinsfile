@@ -8,6 +8,8 @@ pipeline{
         
       stage(' GIT ') {
             steps {
+		  git config --global --unset https.proxy
+
                 echo 'Pulliing ...';
                 git branch: 'mohamed', url: 'https://github.com/Projet-CI/Test-CI.git'          
             }
