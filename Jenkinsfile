@@ -24,7 +24,7 @@ pipeline {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            sh 'printenv'
-           sh 'sudo docker build -t samehbrdocker/validation:latest .'
+           sh ' docker build -t samehbrdocker/validation:latest .'
            sh 'docker push samehbrdocker/validation:latest '
          }
        }
