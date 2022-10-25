@@ -50,7 +50,7 @@ pipeline {
 
 	   stage('Docker Build and Push') {
        steps {
-         withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
+         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            
            sh 'docker build -t medguesmi/mohamedaprojetcicd:latest .'
            sh 'docker push medguesmi/mohamedprojetcicd:latest'
