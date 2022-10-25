@@ -20,16 +20,15 @@ pipeline {
                   }
            }
            
-         stage("Step Build "){
-            steps{
-                sh 'docker build -t validation . '
-            }
-        }
-          stage(" Step Push "){
-            steps{
-                sh 'docker push validation '
-            }
-        }
+         stage('Docker Build and Push') {
+       steps {
+         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+           sh 'printenv'
+           sh 'sudo docker build -t samehbrdocker/validation:latest .'
+           sh 'docker push samehbrdocker/validation:latest '
+         }
+       }
+     }
         stage(" Step Docker-compose "){
             steps{
                 sh 'docker-compose up -d '
