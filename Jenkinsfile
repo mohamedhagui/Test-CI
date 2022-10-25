@@ -66,20 +66,21 @@ pipeline {
         }
 	*/
 	    
-       stage('Docker Build and Push') {
-       steps {
-         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
-           
-           sh 'docker build -t medguesmi/mohamedprojetcicd:latest .'
-           sh 'docker push medguesmi/mohamedprojetcicd:latest'
-         }
-       }
-     }
-     
-     stage('Run Spring & MySQL Containers') {
-            steps {
-                script {
-                    sh 'docker-compose up -d'
+  stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t medguesmi/devops-integration .'
+                }
+            }
+        }
+        stage('Push image to Hub'){
+            steps{
+                script{
+                   withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+                   sh 'docker login -u medguesmi -p ${dockerhub}'
+
+}
+                   sh 'docker push medguesmi/devops-integration'
                 }
             }
         }
