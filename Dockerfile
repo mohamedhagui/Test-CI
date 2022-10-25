@@ -1,4 +1,5 @@
-FROM openjdk:8-jre-alpine
-COPY target/achat-1.0.jar achat-1.0.jar
+FROM maven:3.8.2-jdk-8
+RUN apt-get install curl
+RUN curl -u admin:admin -o achat.jar "http://192.168.0.17:8081/repositories/maven-releases/tn/esprit/rh/achat/10.0/achat-10.0.jar
+CMD mvn spring-boot:run
 EXPOSE 8082
-ENTRYPOINT ["java", "-jar", "achat-1.0.jar"]
